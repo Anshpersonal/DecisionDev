@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Form Validation - Upload{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">Form Validation</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Upload a form to validate against business rules</p>
+                
+                <form action="{{ url_for('form.upload_form') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <div class="mb-3">
+                        <label for="form_type" class="form-label">Form Type</label>
+                        <select class="form-select" id="form_type" name="form_type" required>
+                            <option value="" selected disabled>Select form type</option>
+                            <option value="renewals">Renewals Form</option>
+                            <option value="withdrawals">Withdrawals Form</option>
+                        </select>
+                        <div class="form-text">Select the type of form you're uploading</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="form_file" class="form-label">Upload Form (PDF/JPG)</label>
+                        <input class="form-control" type="file" id="form_file" name="form_file" accept=".pdf,.jpg,.jpeg,.png">
+                        <div class="form-text">Upload your form file or use test mode below</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="test_mode" name="test_mode">
+                        <label class="form-check-label" for="test_mode">Use Test Mode (No file upload required)</label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" id="loadingSpinner"></span>
+                            Validate Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h4 class="card-title mb-0">How It Works</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="process-step">
+                            <div class="process-icon bg-light">1</div>
+                            <h5>Upload Form</h5>
+                            <p>Select form type and upload your document</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="process-step">
+                            <div class="process-icon bg-light">2</div>
+                            <h5>AI Processing</h5>
+                            <p>Our AI extracts and validates form data</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="process-step">
+                            <div class="process-icon bg-light">3</div>
+                            <h5>View Results</h5>
+                            <p>See validation results and any issues found</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Enable/disable file upload based on test mode
+    document.getElementById('test_mode').addEventListener('change', function() {
+        const fileInput = document.getElementById('form_file');
+        fileInput.disabled = this.checked;
+        if (this.checked) {
+            fileInput.removeAttribute('required');
+        } else {
+            fileInput.setAttribute('required', '');
+        }
+    });
+    
+    // Show loading spinner on form submission
+    document.getElementById('uploadForm').addEventListener('submit', function() {
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('loadingSpinner').classList.remove('d-none');
+        document.getElementById('submitBtn').innerText = ' Processing...';
+        document.getElementById('submitBtn').prepend(document.getElementById('loadingSpinner'));
+    });
+</script>
+{% endblock %}
+
+{% block head %}
+<style>
+    .process-step {
+        padding: 15px;
+    }
+    
+    .process-icon {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 0 0 10px rgba(0,0,0,0.05);
+    }
+</style>
+{% endblock %}

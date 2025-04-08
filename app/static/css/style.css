@@ -1,0 +1,92 @@
+/* Custom styles for Form Validation App */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+nav{
+     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);  */
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.validation-response {
+    font-size: 1.1rem;
+}
+
+/* Process steps visualization */
+.process-step {
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s;
+    height: 100%;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.process-icon {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+    transition: all 0.3s;
+}
+
+.process-step:hover .process-icon {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Card shadows */
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+/* Button styles */
+.btn-primary {
+    padding: 0.5rem 1.5rem;
+}
+
+/* Make file input prettier */
+.form-control[type="file"] {
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+}
+
+/* JSON display */
+.json-data {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+}
