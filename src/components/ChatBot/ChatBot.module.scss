@@ -1,0 +1,112 @@
+
+@use '@carbon/react/scss/theme' as *;
+
+
+
+.headerButtons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1em;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $border-subtle-00;
+    
+    .resetButton {
+        margin-left: 8px;
+    }
+}
+
+.chatbot {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, $background 80%, rgba(69,137,255,.2));
+    border: 1px solid rgba(69, 137, 255, 0.2);
+    border-radius: 8px;
+    block-size: 640px;
+    inline-size: 520px;
+    box-shadow: rgba(0, 0, 0, 0.28) 2px 5px 20px 0px
+}
+
+.header {
+    border-bottom: 1px solid $border-subtle-00;
+    display: flex;
+    padding: .5em;
+}
+
+.slug {
+    margin-left: auto;
+}
+
+.icon {
+    margin-right: .5em;
+}
+
+.messages {
+    flex: 1;
+    font-size: 14px;
+    height: 100%;
+    overflow-y: scroll;
+    padding-top: 2em;
+    .messageContainer {
+        padding: 8px 16px;
+        display: flex;
+        flex-direction: column;
+        .nameWrapper {
+            display: flex;
+            align-items: center;
+            padding-bottom: 12px;
+        }
+        .username {
+            font-size: 12px;
+        }
+        .message {
+            width: fit-content;
+            padding: 6px 16px;
+            padding-left: 0px;
+            border-end-end-radius: 8px;
+            border-end-start-radius: 8px;
+            border-start-start-radius: 8px;
+            max-inline-size: 95%;
+            word-break: break-word;
+            &.sent {
+                background-color: $layer-01;
+                padding-left: 16px;
+            }
+        }
+        .errorMessage {
+            line-height: 22px;
+            color: $support-error;
+            border: 1px solid $support-error;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+}
+
+.inputcontainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-inline-start: 16px;
+    padding-inline-end: 8px;
+}
+
+.inputcontainerHasFocus {
+    outline: 1px solid transparent;
+    outline-color: $text-primary;
+}
+
+.chatinput {
+    resize: none;
+    border: none;
+    outline: none;
+    flex: 1;
+    padding-block: 12px;
+    margin-right: 12px;
+}
+
+.footer {
+    border-top: 1px solid $border-subtle-00;
+    background-color: $background;
+    display: flex;
+}
